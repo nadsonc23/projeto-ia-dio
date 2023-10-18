@@ -1,0 +1,26 @@
+#Utiliando a API do OpenAI GPT-3.5 para gerar uma mensagem de marketing personalizada para cada usuário.
+
+!pip install openai
+
+openai_api_key = 'Key-individual-chatgpt'
+
+import openai
+
+openai.api_key = openai_api_key
+
+def generate_ai_news(user):
+    completion = openai.Completion.create(
+        engine="text-davinci-003",  # Use a engine correta para GPT-3
+        prompt=f"Crie uma mensagem para {user['name']} sobre a importância dos investimentos para uma qualidade de vida melhor e mais segura (máximo de 100 caracteres)",
+        max_tokens=200
+    )
+    return completion.choices[0].text.strip('\"')
+
+
+for user in users:
+  news = generate_ai_news(user)
+  print(news)
+  user['news'].append({
+      "icon": "https://digitalinnovationone.github.io/santander-dev-week-2023-api/icons/credit.svg",
+      "description": news
+  })
