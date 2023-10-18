@@ -1,11 +1,11 @@
-### Extração da lista de Id's dos usuários no arquivo csv
+# Extração da lista de Id's dos usuários no arquivo csv
 import pandas as pd
 
 df = pd.read_csv('SDW2023.csv')
 user_ids = df['UserID'].tolist()
 print(user_ids)
 
-### Extração da lista de Id's dos usuários no Swagger UI
+# Extração da lista de Id's dos usuários no Swagger UI
 import requests
 import json
 
